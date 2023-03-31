@@ -17,17 +17,17 @@ public class ErrorResponse {
 	private String message;
 
 	/** Downstream API name that has been called by this application */
-	private DownstreamApi api;
+	private String api;
 
 	/** URI that has been called */
 	private String path;
 
 	public ErrorResponse(MyRestTemplateException ex, String path) {
 		this.timestamp = DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(LocalDateTime.now());
-		this.status = ex.getStatus().value();
-		this.error = ex.getStatus().getReasonPhrase();
+		this.status = ex.getStatusCode().value();
+		this.error = ex.getStatusCode().getReasonPhrase();
 		this.message = ex.getError();
-		this.api = ex.getDownStreamApi();
+		this.api = ex.getServiceName();
 		this.path = path;
 	}
 
@@ -63,11 +63,11 @@ public class ErrorResponse {
 		this.message = message;
 	}
 
-	public DownstreamApi getApi() {
+	public String getApi() {
 		return api;
 	}
 
-	public void setApi(DownstreamApi api) {
+	public void setApi(String api) {
 		this.api = api;
 	}
 

@@ -12,7 +12,7 @@ class ProfileApplicationTests {
 	@Autowired
 	ServiceImpl service;
 	
-//	@Test
+	@Test
 	void contextLoads() throws Exception {
 		service.justPrint();
 //		service.justPrintWithValue(null);

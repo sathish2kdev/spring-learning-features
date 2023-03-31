@@ -4,39 +4,22 @@ import org.springframework.http.HttpStatus;
 
 public class MyRestTemplateException extends RuntimeException {
 
-	private DownstreamApi downStreamApi;
-	private HttpStatus status;
+	private String serviceName;
+	private HttpStatus statusCode;
 	private String error;
-
-	public MyRestTemplateException(DownstreamApi downStreamApi, HttpStatus status, String error) {
-		super(error);
-		this.downStreamApi = downStreamApi;
-		this.status = status;
+	public MyRestTemplateException(String serviceName, HttpStatus statusCode, String error) {
+		super();
+		this.serviceName = serviceName;
+		this.statusCode = statusCode;
 		this.error = error;
 	}
-
-	public DownstreamApi getDownStreamApi() {
-		return downStreamApi;
+	public String getServiceName() {
+		return serviceName;
 	}
-
-	public void setDownStreamApi(DownstreamApi downStreamApi) {
-		this.downStreamApi = downStreamApi;
+	public HttpStatus getStatusCode() {
+		return statusCode;
 	}
-
-	public HttpStatus getStatus() {
-		return status;
-	}
-
-	public void setStatus(HttpStatus status) {
-		this.status = status;
-	}
-
 	public String getError() {
 		return error;
 	}
-
-	public void setError(String error) {
-		this.error = error;
-	}
-
 }

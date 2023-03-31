@@ -17,7 +17,7 @@ public class MyExceptionHandler extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(value = MyRestTemplateException.class)
 	ResponseEntity<ErrorResponse> handleMyRestTemplateException(MyRestTemplateException ex,
 			HttpServletRequest request) {
-		LOGGER.error("An error happened while calling {} Downstream API: {}", ex.getDownStreamApi(), ex.toString());
-		return new ResponseEntity<>(new ErrorResponse(ex, request.getRequestURI()), ex.getStatus());
+		LOGGER.error("An error happened while calling {} Downstream API: {}", ex.getServiceName(), ex.toString());
+		return new ResponseEntity<>(new ErrorResponse(ex, request.getRequestURI()), ex.getStatusCode());
 	}
 }

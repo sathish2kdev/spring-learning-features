@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.client.DefaultResponseErrorHandler;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class MyApiRestTemplateErrorHandler extends DefaultResponseErrorHandler {
 
 	@Override
@@ -21,9 +23,15 @@ public class MyApiRestTemplateErrorHandler extends DefaultResponseErrorHandler {
 				// error message.
 				// Here the whole response will be treated as the error message, you probably
 				// don't want that.
-				String errorMessage = httpBodyResponse;
+//				String errorMessage = httpBodyResponse;
+				
+				
+				  ObjectMapper mapper = new ObjectMapper();
+				  ErrorResponse restTemplateError = mapper.readValue(httpBodyResponse, ErrorResponse.class);
 
-				throw new MyRestTemplateException(DownstreamApi.MY_API_1, response.getStatusCode(), errorMessage);
+//				throw new MyRestTemplateException(DownstreamApi.MY_API_1, response.getStatusCode(), errorMessage);
+
+		          throw new MyRestTemplateException(restTemplateError.getPath(), response.getStatusCode(), restTemplateError.getError());
 			}
 		}
 	}
