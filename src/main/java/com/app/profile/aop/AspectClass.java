@@ -21,7 +21,7 @@ public class AspectClass {
 //	@Pointcut("execution(public void com.app.profile.service.ServiceImpl.justPrint())")
 //	@Pointcut("execution(* com.app.profile.service..*())")
 
-	@Pointcut("within(com.app.profile.controller.*) || within(com.app.profile.service..*)")
+	@Pointcut("within(com.app.profile.controller.*) || within(com.app.profile.service..*) || within(com.app.profile.caching.*)")
 //	@Pointcut("within(com.app.profile.service.ServiceImpl)")
 	public void pointCutLog() {
 	}
