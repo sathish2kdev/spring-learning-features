@@ -8,7 +8,7 @@
 6) Spring Boot Asynchronous API Call uisng Resttemplate
 7) Spring Boot Using Caching
 8) Spring Boot Using Actuator
-9)Spring Boot WebClient and JsonView
+9) Spring Boot WebClient and JsonView
 
 
 Example 
