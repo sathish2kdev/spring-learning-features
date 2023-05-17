@@ -30,3 +30,7 @@ Spring Boot Commands
 4) mvn spring-boot:run -Dspring-boot.run.profiles=test(using application and select profiling)
 
 
+
+http://localhost:8080/oauth/authorize?client_id=javainuse-client&response_type=code&scope=read_profile_info
+
+http://localhost:8080/oauth/authorize?grant_type=client_credentials&client_id=javainuse-client&client_secret=javainuse-secret&scope=read_profile_info 
