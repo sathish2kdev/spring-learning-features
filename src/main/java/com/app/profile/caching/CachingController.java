@@ -30,9 +30,9 @@ public class CachingController {
 		try {
 			List<String> data = Arrays.asList("MSD,VIART KHOLI,ROHIT SHARAMA,SACHIN TENDULKAR");
 			System.out.println("HELLO");
-			return new ResponseEntity<List<String>>(data,HttpStatus.OK);
+			return new ResponseEntity<>(data, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
 }
