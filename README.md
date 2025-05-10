@@ -9,6 +9,7 @@
 7) Spring Boot Using Caching
 8) Spring Boot Using Actuator
 9) Spring Boot WebClient and JsonView
+10) Completable Future with Async Api call vs parallelStream Api call
 
 
 Example 
@@ -34,3 +35,11 @@ Spring Boot Commands
 http://localhost:8080/oauth/authorize?client_id=javainuse-client&response_type=code&scope=read_profile_info
 
 http://localhost:8080/oauth/authorize?grant_type=client_credentials&client_id=javainuse-client&client_secret=javainuse-secret&scope=read_profile_info 
+
+**Why Not to Use parallel Stream for async operations**
+Using parallelStream() here is redundant and may harm performance or create unpredictable behavior, because:
+1) parallelStream() itself uses the common ForkJoinPool, and you're mixing that with Spring’s async executor (which could lead to thread contention).
+2) You're not gaining any performance benefit because the @Async method is already non-blocking.
+3) It adds complexity and can cause subtle bugs in larger apps (especially with context propagation, transactions, etc.).
+
+
